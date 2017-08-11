@@ -12,9 +12,10 @@ api = twitter.Api(consumer_key=api_info['consumer_key'],
 # most popular
 def search_by_hash():
     search_term = input("Enter your search team, sans hash tag: ")
+    result_type = input("Enter search type (mixed, popular, recent): ")
     # The '%23' is how Twitter formats a url when searching by hash tag
-    query = 'q=%23' + search_term + '&src=typd'
-    search = api.GetSearch(raw_query=query, count=100, result_type="popular")
+    query = 'q=%23' + search_term + '&src=typd&result_type=recent&count=100'
+    search = api.GetSearch(raw_query=query)
 
     print(len(search))
     return search
